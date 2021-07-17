@@ -18,9 +18,9 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @EnableEurekaClient
 @SpringBootApplication
-public class EurekaRegistryConsumer {
+public class RibbonEurekaRegistryConsumer {
     public static void main(String[] args) {
-        SpringApplication.run(EurekaRegistryConsumer.class, args);
+        SpringApplication.run(RibbonEurekaRegistryConsumer.class, args);
     }
 
     @Autowired

@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ribbon</module>
+        <module>springcloud-loadbalancer</module>
     </modules>
 
     <properties>
