@@ -1,0 +1,14 @@
+server:
+  port: 8761
+#  servlet:   client端必须要在这个基础上再加'/eureka'后缀
+#    context-path: /eureka
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    # 是否将自己注册到eureka上，这里选择false
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka

@@ -1,0 +1,8 @@
+server:
+  port: 8764
+eureka:
+  instance:
+    hostname: peer3.com
+  client:
+    serviceUrl:
+      defaultZone: http://peer1.com:8762/eureka/,http://peer2.com:8763/eureka/
