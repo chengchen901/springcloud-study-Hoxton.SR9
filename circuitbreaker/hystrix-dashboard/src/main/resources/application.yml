@@ -1,0 +1,6 @@
+server:
+  port: 9001
+# 为了使用/proxy.stream端点，必须配置允许连接的主机列表，*代表所有  
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"

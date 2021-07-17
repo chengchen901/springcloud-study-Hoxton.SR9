@@ -1,0 +1,47 @@
+server:
+  port: 8015
+
+eureka:
+  client:
+    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka
+      #eureka集群
+      defaultZone: http://peer1.com:8762/eureka/,http://peer2.com:8763/eureka/,http://peer3.com:8764/eureka/
+    register-with-eureka: true
+
+spring:
+  application:
+    name: hystrix-goods-consumer
+  cloud:
+    circuitbreaker: 
+      hystrix: 
+        # 禁用配置false值
+        enabled: true
+        
+# 配置文件的方式配置hystrix的属性        
+hystrix: 
+  command: 
+    default: 
+      circuitBreaker: 
+        requestVolumeThreshold: 3
+        errorThresholdPercentage: 1
+        sleepWindowInMilliseconds: 5000
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 500
+    sleep:
+      circuitBreaker:
+        requestVolumeThreshold: 3
+        errorThresholdPercentage: 1
+        sleepWindowInMilliseconds: 5000
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+        
+management: 
+  endpoints: 
+    web: 
+      exposure: 
+        include: hystrix.stream
