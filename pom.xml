@@ -8,6 +8,8 @@
         <module>registry</module>
         <module>loadbalancer</module>
         <module>circuitbreaker</module>
+        <module>client</module>
+        <module>cloud-commons</module>
     </modules>
 
     <parent>

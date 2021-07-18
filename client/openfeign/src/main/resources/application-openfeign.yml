@@ -1,0 +1,38 @@
+server:
+  port: 8025
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+      #eureka集群
+      #defaultZone: http://peer1.com:8762/eureka/,http://peer2.com:8763/eureka/,http://peer3.com:8764/eureka/
+    register-with-eureka: true
+
+spring:
+  application:
+    name: store-feign-consummer
+  cloud:
+    # 禁用ribbon，启用spring cloud loadbalancer
+    loadbalancer:
+      ribbon:
+        enabled: false
+# 使用yml配置feign        
+feign:
+  client:
+    config:
+      goods-service: # feign名称，默认default表示全局配置，如果想指定某个client则使用对应的名称
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full 
+  hystrix: 
+    enabled: true
+    
+hystrix: 
+  command: 
+    default: 
+      timeout: 
+        enabled: true
+      isolation: 
+        thred: 
+          timeOutInMilliseconds: 3000
