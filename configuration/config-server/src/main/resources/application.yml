@@ -1,0 +1,37 @@
+server:
+  port: 8888
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+      #eureka集群
+      #defaultZone: http://peer1.com:8762/eureka/,http://peer2.com:8763/eureka/,http://peer3.com:8764/eureka/
+    register-with-eureka: true
+    
+spring:
+  config:
+    name: 
+  cloud:
+    config:
+      server:
+        #native:
+        #  search-locations: file:///F:/workspace/idea/vip/springcloud-apply-Hoxton.SR9/configuration/config-server/config-repo
+        git:
+          
+          # 使用gitLab，http URL形式，后面要注意有.git后缀
+#          uri: https://github.com/chengchen901/config-repo.git
+          # 使用本地git仓库，file:// 会导致Invalid config server configuration错误，需要三个‘/’
+          uri: file:///${user.dir}/configuration/config-server/config-repo
+#          username: 账号
+#          password: 密码
+          # 拉到本地的文件目录
+          basedir: target/config
+          timeout: 10
+      # 作为http服务资源的{application}
+      name: configserver

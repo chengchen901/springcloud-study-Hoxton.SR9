@@ -1,0 +1,25 @@
+server:
+  port: 8880
+  
+spring: 
+  application: 
+    # 与服务端的{application}对应
+    name: config-client-app
+  profiles:
+    # 对应服务的{profile}标记
+    active: dev
+  cloud:
+    config:
+      # 指定配置从配置中心加载的路径
+      uri: http://localhost:8888/
+      # 配置文件的前缀名字
+      #name: application
+      # gitLab形式配置
+      name: myapp
+management:
+  endpoints:
+    web:
+      exposure:
+        # 用于在web中暴露所有actuator端点
+        # 这里主要开放/actuator/refresh来刷新配置缓存
+        include: "*"

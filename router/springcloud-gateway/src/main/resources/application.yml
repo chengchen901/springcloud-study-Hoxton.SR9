@@ -1,0 +1,8 @@
+spring: 
+  application:
+    name: cloud-gateway
+  profiles:
+    active: simple
+
+server:
+  port: 8765

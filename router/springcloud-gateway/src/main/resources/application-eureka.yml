@@ -1,0 +1,13 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+      #eureka集群
+      #defaultZone: http://peer1.com:8762/eureka/,http://peer2.com:8763/eureka/,http://peer3.com:8764/eureka/
+    register-with-eureka: true
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true

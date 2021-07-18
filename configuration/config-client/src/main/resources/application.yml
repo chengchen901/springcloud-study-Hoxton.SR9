@@ -1,0 +1,19 @@
+server:
+  port: 8880
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+      #eureka集群
+      #defaultZone: http://peer1.com:8762/eureka/,http://peer2.com:8763/eureka/,http://peer3.com:8764/eureka/
+    register-with-eureka: true
+
+# bootstrap.yml中配置为从外部配置中心读取配置，在这里将外部配置中心调整为可选，
+# 利于配置中心没有启动的情况下可以启动客户端
+spring: 
+  config: 
+    import: iptional:configserver:http://localhost:8888
+  application: 
+    # 覆盖bootstrap中定义的名字
+    name: my-config-client-app
